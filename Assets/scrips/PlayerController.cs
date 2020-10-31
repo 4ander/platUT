@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController ct;
     private Rigidbody rb;
-    private float speed = 1f;
+    private float speed = 3f;
     public float gravity = 20.0f;
+    public float jumpSpeed = 8.0f;
 
     private Vector3 dir=Vector3.zero;
     // Start is called before the first frame update
@@ -27,6 +28,11 @@ public class PlayerController : MonoBehaviour
         {
             dir = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             dir *= speed;
+
+            if (Input.GetButton("Jump"))
+            {
+                dir.y = jumpSpeed;
+            }
         }
         dir.y -= gravity * Time.deltaTime;
            
