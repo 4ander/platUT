@@ -9,6 +9,7 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+Assets/Kenny platformer/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
