@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     CharacterController ct;
     private Rigidbody rb;
     public float speed = 3f;
-    public float jumpSpeed = 10.0f;
+    public float jumpForce = 6.25f;
     public float turnSmoothTime = 0.04f;
     private Vector3 facingdir;
     float turnSmoothVelocity;
@@ -50,16 +50,20 @@ public class PlayerController : MonoBehaviour
             if (cast1 || cast2 || cast3 || cast4)
             {
                 // add force upwards
-                rb.AddForce(Vector3.up * jumpSpeed, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
-           // dir.y = jumpSpeed;
+           // dir.y = jumpForce;
             }
-        
-      
-            float targetangle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y,targetangle,ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-       
+
+
+        //float targetangle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y,targetangle,ref turnSmoothVelocity, turnSmoothTime);
+        //transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        if (facingdir.magnitude > 0)
+        {
+            transform.forward = facingdir;
+        }
+
     }
 
  
